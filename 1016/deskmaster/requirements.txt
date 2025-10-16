@@ -1,0 +1,17 @@
+# Core dependencies
+mcp-ocr>=0.1.0
+google-generativeai>=0.8.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
+
+# Windows UI Automation
+pywinauto>=0.6.8
+pyautogui>=0.9.54
+pywin32>=306
+
+# Image processing
+Pillow>=10.0.0
+pytesseract>=0.3.10
+
+# HTTP requests
+requests>=2.31.0

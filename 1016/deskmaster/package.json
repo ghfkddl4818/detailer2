@@ -1,0 +1,20 @@
+{
+  "name": "deskmaster-mcp",
+  "version": "1.0.0",
+  "description": "DeskMaster MCP - Naver Shopping UIA-based List Scanner",
+  "type": "module",
+  "scripts": {
+    "install-mcp-servers": "npm run install:windows-automation && npm run install:gemini",
+    "install:windows-automation": "cd mcp-servers && git clone https://github.com/mario-andreschak/mcp-windows-desktop-automation.git && cd mcp-windows-desktop-automation && npm install && npm run build",
+    "install:gemini": "echo 'Gemini MCP will be installed via npx'",
+    "start": "python src/main.py"
+  },
+  "keywords": [
+    "mcp",
+    "windows-automation",
+    "uia",
+    "naver-shopping"
+  ],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,50 @@
+# Sensitive Credentials - NEVER COMMIT
+*.json
+!package*.json
+github_*_token.md
+.env
+.env.*
+!.env.example
+
+# API Keys and Secrets
+*.key
+*.pem
+credentials/
+secrets/
+
+# Logs and Artifacts
+logs/
+artifacts/
+*.log
+*.csv
+
+# Screenshots
+*.png
+*.jpg
+*.jpeg
+!docs/*.png
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary Files
+temp/
+tmp/
+*.tmp
