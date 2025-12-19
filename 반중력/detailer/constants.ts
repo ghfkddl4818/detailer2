@@ -5,7 +5,7 @@ import { PortfolioCategory, PortfolioItem, ServiceItem, ServiceType } from './ty
 // 1. 로컬 개발 시: "." (기본값)
 // 2. 깃허브 호스팅 시: "https://raw.githubusercontent.com/[사용자ID]/[저장소명]/main" 
 // =========================================================================================
-export const IMAGE_BASE_URL = "."; 
+export const IMAGE_BASE_URL = ".";
 
 export const EMAIL_CONTACT = "detailer4818@gmail.com";
 
@@ -85,5 +85,12 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: PortfolioCategory.CREATION,
     afterImage: `${IMAGE_BASE_URL}/제작/full_page.jpg`,
     description: '인트로, 포인트, 디테일 컷까지 흐름을 고려한 전체 제작'
+  },
+  {
+    id: 'p5',
+    title: '노블레스 시그니처 필로우 (제작)',
+    category: PortfolioCategory.CREATION,
+    afterImage: `${IMAGE_BASE_URL}/제작/PT4_상세페이지_제작.png`,
+    description: '프리미엄 침구 브랜드의 고급스러운 상세페이지 제작 예시'
   }
 ];

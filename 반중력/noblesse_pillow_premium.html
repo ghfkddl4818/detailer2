@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노블레스 시그니처 필로우 - 프리미엄 경추베개</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* 네이버 스마트스토어 권장 860px 고정폭 */
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .container {
+            width: 860px;
+            background-color: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 폰트 설정 */
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-sans {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        /* 텍스트 줄바꿈 처리 */
+        .keep-all {
+            word-break: keep-all;
+        }
+
+        /* 이미지 플레이스홀더 스타일 */
+        .img-placeholder {
+            width: 100%;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 14px;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0F172A', /* Deep Navy */
+                            gold: '#D4AF37', /* Premium Gold */
+                            gray: '#F8F9FA',
+                            text: '#333333'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- SECTION 1: HERO (Magazine Cover Style) -->
+        <section class="relative w-full h-[1000px] bg-brand-dark text-white overflow-hidden">
+            <!-- Background Image Placeholder -->
+            <div class="absolute inset-0 opacity-60">
+                <div class="img-placeholder h-full bg-slate-800 text-slate-400">
+                    <span>[이미지: 어두운 침실, 고급 호텔 스위트룸 분위기. 베개에 스포트라이트가 비춰지며 질감이 강조됨]</span>
+                </div>
+            </div>
+
+            <div class="relative z-10 h-full flex flex-col justify-between p-16">
+                <div class="text-center mt-20">
+                    <p class="text-brand-gold font-serif italic text-2xl mb-4 tracking-widest">The Masterpiece of Sleep
+                    </p>
+                    <h1 class="text-6xl font-bold leading-tight mb-6">
+                        당신의 잠은<br>
+                        <span class="text-brand-gold">예술</span>이 됩니다
+                    </h1>
+                    <div class="w-12 h-1 bg-brand-gold mx-auto"></div>
+                </div>
+
+                <div class="text-center mb-20">
+                    <p class="text-lg font-light opacity-90 tracking-wider">NOBLESSE SIGNATURE PILLOW</p>
+                    <p class="text-sm text-brand-gold mt-2">PREMIUM COLLECTION 2025</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INTRO (Brand Philosophy) -->
+        <section class="py-32 px-16 bg-white text-center">
+            <span class="text-brand-gold font-serif text-6xl block mb-8">"</span>
+            <h2 class="text-4xl font-bold text-brand-dark mb-10 leading-snug keep-all">
+                타협하지 않는 완벽함,<br>
+                그것이 노블레스의 기준입니다.
+            </h2>
+            <p class="text-gray-600 leading-loose text-lg mb-12 keep-all">
+                하루의 1/3을 차지하는 수면 시간.<br>
+                그 시간의 가치를 알기에 우리는 소재 하나, 각도 1도까지 집착했습니다.<br>
+                단순한 베개가 아닌, 당신의 내일을 바꾸는 오브제를 선사합니다.
+            </p>
+            <div class="img-placeholder h-[400px] w-full rounded-sm">
+                <span>[이미지: 장인의 손길로 베개를 마감하는 클로즈업 컷. 흑백 처리로 전문성 강조]</span>
+            </div>
+        </section>
+
+        <!-- SECTION 3: USP 1 (Material) -->
+        <section class="bg-brand-gray py-24">
+            <div class="flex flex-col items-center">
+                <div class="w-[760px] bg-white shadow-xl p-12 relative">
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-brand-gold opacity-20 rounded-full"></div>
+
+                    <div class="flex justify-between items-end mb-10">
+                        <div>
+                            <h3 class="text-brand-gold font-bold tracking-widest text-sm mb-2">MATERIAL</h3>
+                            <h2 class="text-4xl font-bold text-brand-dark">하이퍼 메모리폼</h2>
+                        </div>
+                        <span class="font-serif text-6xl text-gray-200">01</span>
+                    </div>
+
+                    <div class="img-placeholder h-[350px] mb-10">
+                        <span>[이미지: 메모리폼을 손으로 눌렀을 때 부드럽게 복원되는 GIF 또는 고화질 컷]</span>
+                    </div>
+
+                    <p class="text-gray-700 text-lg leading-relaxed keep-all">
+                        일반 메모리폼과는 차원이 다릅니다. <br>
+                        <strong>밀도 60kg/m³의 고밀도 하이퍼 폼</strong>은 머리의 무게를 완벽하게 분산시켜<br>
+                        마치 무중력 상태에 떠 있는 듯한 편안함을 제공합니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: USP 2 (Ergonomics) -->
+        <section class="bg-brand-dark text-white py-32 px-12">
+            <div class="flex items-center justify-between mb-16">
+                <div class="text-left">
+                    <h3 class="text-brand-gold font-bold tracking-widest text-sm mb-3">ERGONOMICS</h3>
+                    <h2 class="text-4xl font-bold leading-tight">C-Curve<br>설계의 미학</h2>
+                </div>
+                <div class="w-1/2 h-[1px] bg-gray-700"></div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8">
+                <div class="img-placeholder h-[500px] bg-slate-800">
+                    <span>[이미지: 베개 단면도와 목뼈(경추)의 C자 라인이 일치하는 그래픽]</span>
+                </div>
+                <div class="flex flex-col justify-center space-y-8">
+                    <div>
+                        <h4 class="text-xl font-bold text-brand-gold mb-2">이상적인 높이 9cm</h4>
+                        <p class="text-gray-400 leading-relaxed text-sm">한국인의 체형 데이터를 분석하여 찾아낸<br>가장 편안한 목의 높이를 구현했습니다.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-brand-gold mb-2">사이드 서포트</h4>
+                        <p class="text-gray-400 leading-relaxed text-sm">옆으로 누워도 어깨가 눌리지 않도록<br>양쪽 사이드를 높게 설계했습니다.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-brand-gold mb-2">이어 홀 (Ear Hole)</h4>
+                        <p class="text-gray-400 leading-relaxed text-sm">귀 눌림 방지 홀을 적용하여<br>어떤 자세에서도 쾌적함을 유지합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: DETAIL (Cover) -->
+        <section class="py-24 px-0">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-dark mb-4">피부에 닿는 순간, 감동이 됩니다</h2>
+                <p class="text-gray-500">오가닉 텐셀(Tencel) 커버</p>
+            </div>
+
+            <div class="w-full h-[600px] relative">
+                <div class="img-placeholder h-full">
+                    <span>[이미지: 텐셀 원단의 부드러운 질감을 극대화한 매크로 샷. 깨끗한 화이트 톤]</span>
+                </div>
+                <div class="absolute bottom-10 right-10 bg-white/90 p-8 backdrop-blur-sm shadow-lg max-w-xs">
+                    <p class="text-brand-dark font-serif italic text-xl mb-2">Soft & Breathable</p>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        유칼립투스 나무 추출물로 만든 친환경 소재.<br>
+                        실크보다 부드럽고 면보다 흡수성이 뛰어납니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: CHECKLIST -->
+        <section class="bg-brand-gray py-24 px-12">
+            <h2 class="text-center text-3xl font-bold text-brand-dark mb-16">이런 분들께 헌정합니다</h2>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white p-8 border-l-4 border-brand-gold shadow-sm">
+                    <p class="text-brand-dark font-bold text-lg mb-2">잠을 자도 개운하지 않은 분</p>
+                    <p class="text-sm text-gray-500">수면의 질을 획기적으로 높여드립니다.</p>
+                </div>
+                <div class="bg-white p-8 border-l-4 border-brand-gold shadow-sm">
+                    <p class="text-brand-dark font-bold text-lg mb-2">목과 어깨가 늘 뻐근한 분</p>
+                    <p class="text-sm text-gray-500">경추를 올바르게 지지하여 긴장을 풀어줍니다.</p>
+                </div>
+                <div class="bg-white p-8 border-l-4 border-brand-gold shadow-sm">
+                    <p class="text-brand-dark font-bold text-lg mb-2">옆으로 누워 주무시는 분</p>
+                    <p class="text-sm text-gray-500">어깨 눌림 없이 편안한 자세를 유지합니다.</p>
+                </div>
+                <div class="bg-white p-8 border-l-4 border-brand-gold shadow-sm">
+                    <p class="text-brand-dark font-bold text-lg mb-2">프리미엄 침구를 선호하는 분</p>
+                    <p class="text-sm text-gray-500">침실의 품격을 완성하는 디자인입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: OUTRO -->
+        <section class="py-32 bg-brand-dark text-white text-center">
+            <div
+                class="img-placeholder w-32 h-32 mx-auto rounded-full mb-8 bg-brand-gold text-brand-dark font-bold flex items-center justify-center">
+                LOGO
+            </div>
+            <h2 class="text-4xl font-serif mb-6">Noblesse Signature</h2>
+            <p class="text-gray-400 mb-12">당신의 가장 완벽한 휴식을 위해</p>
+
+            <div
+                class="inline-block border border-brand-gold px-12 py-4 text-brand-gold tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-colors cursor-pointer">
+                SHOP NOW
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>
