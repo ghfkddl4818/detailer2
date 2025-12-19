@@ -59,8 +59,8 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     id: 'p1',
     title: '기본 번역 예시 (15,000원)',
     category: PortfolioCategory.TRANSLATION,
-    beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/before.jpg`,
-    afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/after.jpg`,
+    beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/PT1_원문.png`,
+    afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/PT1_한글.png`,
     description: '중국어 원문의 배치를 유지하되 가독성을 높인 기본 번역'
   },
   {
@@ -68,14 +68,14 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: '썸네일 제작 예시 (4,000원)',
     category: PortfolioCategory.TRANSLATION,
     beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT2/PT2_썸네일_원문.png`,
-    afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT2/PT2_썸네일_제작.png`,
+    afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT2/PT2_썸네일_한글.png`,
     description: '클릭을 유도하는 깔끔한 한글 썸네일 제작'
   },
   {
     id: 'p3',
     title: '번역 + 히어로/썸네일 (33,000원)',
     category: PortfolioCategory.TRANSLATION,
-    beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/before.jpg`,
+    beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_원문.png`,
     afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_히어로섹션_제작.png`,
     description: '상세페이지의 첫인상을 결정하는 히어로 섹션 디자인'
   },
@@ -83,7 +83,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     id: 'p4',
     title: '상세페이지 전체 제작 (44,000원)',
     category: PortfolioCategory.CREATION,
-    afterImage: `${IMAGE_BASE_URL}/제작/full_page.jpg`,
+    afterImage: `${IMAGE_BASE_URL}/제작/PT4_상세페이지_제작.png`,
     description: '인트로, 포인트, 디테일 컷까지 흐름을 고려한 전체 제작'
   }
 ];
