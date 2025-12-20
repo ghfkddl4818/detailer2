@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DETAILER - 상세페이지 제작</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="./logo.png" />
+    <link rel="icon" type="image/png" href="./logo.webp" />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,38 +136,55 @@
           id: 'p1',
           title: '기본 번역 예시 (15,000원)',
           category: PortfolioCategory.TRANSLATION,
-          beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/before.jpg`, 
-          afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/after.jpg`,
-          fallbackBefore: 'https://picsum.photos/400/600?random=1',
-          fallbackAfter: 'https://picsum.photos/400/600?random=2',
-          description: '중국어 원문의 배치를 유지하되 가독성을 높인 기본 번역'
+          beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/PT1_원문.webp`,
+          afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/PT1_한글.webp`,
+          description: '중국어 원문의 배치를 유지하되 가독성을 높인 기본 번역',
+          tabs: [
+            {
+              name: '제품 A',
+              beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/PT1_원문.webp`,
+              afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT1/PT1_한글.webp`
+            },
+            {
+              name: '제품 B',
+              beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT2/PT2_원문.webp`,
+              afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT2/PT2_한글.webp`
+            },
+            {
+              name: '제품 C',
+              beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_원문.webp`,
+              afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_한글.webp`
+            }
+          ]
         },
         {
           id: 'p2',
-          title: '썸네일 제작 예시 (4,000원)',
+          title: '추가 제작 예시 (각 4,000원)',
           category: PortfolioCategory.TRANSLATION,
-          beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT2/PT2_썸네일_원문.png`,
-          afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT2/PT2_썸네일_제작.png`,
-          fallbackBefore: 'https://picsum.photos/400/400?random=3',
-          fallbackAfter: 'https://picsum.photos/400/400?random=4',
-          description: '클릭을 유도하는 깔끔한 한글 썸네일 제작'
+          beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_썸네일_원문.webp`,
+          afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_썸네일_한글.webp`,
+          description: '썸네일, 옵션리스트 등 추가 제작 서비스',
+          tabs: [
+            {
+              name: '썸네일',
+              images: [
+                `${IMAGE_BASE_URL}/원문_한글_번역/PT2/PT2_썸네일_원문.webp`,
+                `${IMAGE_BASE_URL}/원문_한글_번역/PT2/PT2_썸네일_한글.webp`,
+                `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_썸네일_원문.webp`,
+                `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_썸네일_한글.webp`
+              ]
+            },
+            {
+              name: '옵션리스트',
+              afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_히어로섹션_제작.webp`
+            }
+          ]
         },
         {
           id: 'p3',
-          title: '번역 + 히어로/썸네일 (33,000원)',
-          category: PortfolioCategory.TRANSLATION,
-          beforeImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/before.jpg`, 
-          afterImage: `${IMAGE_BASE_URL}/원문_한글_번역/PT3/PT3_히어로섹션_제작.png`,
-          fallbackBefore: 'https://picsum.photos/400/600?random=5',
-          fallbackAfter: 'https://picsum.photos/400/600?random=6',
-          description: '상세페이지의 첫인상을 결정하는 히어로 섹션 디자인'
-        },
-        {
-          id: 'p4',
           title: '상세페이지 전체 제작 (44,000원)',
           category: PortfolioCategory.CREATION,
-          afterImage: `${IMAGE_BASE_URL}/제작/full_page.jpg`,
-          fallbackAfter: 'https://picsum.photos/600/1200?random=7',
+          afterImage: `${IMAGE_BASE_URL}/제작/PT4_상세페이지_제작.webp`,
           description: '인트로, 포인트, 디테일 컷까지 흐름을 고려한 전체 제작'
         }
       ];
@@ -216,7 +233,7 @@
       // 2. Logo Component (Clean for Production)
       const Logo = ({ variant = 'header', className = '' }) => {
         // Try Embedded Base64 first, then local files
-        const candidates = [EMBEDDED_LOGO_BASE64, './logo.png', 'logo.png', '/logo.png'].filter(c => c && c.length > 0);
+        const candidates = [EMBEDDED_LOGO_BASE64, './logo.webp', 'logo.webp', '/logo.webp'].filter(c => c && c.length > 0);
         
         const [candidateIndex, setCandidateIndex] = useState(0);
         const [hasError, setHasError] = useState(false);
@@ -429,9 +446,42 @@
       };
 
       const Portfolio = () => {
-        const [activeTab, setActiveTab] = useState(PortfolioCategory.TRANSLATION);
         const [selectedItem, setSelectedItem] = useState(null);
-        const filteredItems = PORTFOLIO_ITEMS.filter(item => item.category === activeTab);
+        const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+        const beforeScrollRef = useRef(null);
+        const afterScrollRef = useRef(null);
+        const isSyncingScroll = useRef(false);
+
+        // Synchronized scrolling effect
+        useEffect(() => {
+          const beforeEl = beforeScrollRef.current;
+          const afterEl = afterScrollRef.current;
+
+          if (!beforeEl || !afterEl) return;
+
+          const syncScroll = (source, target) => {
+            if (isSyncingScroll.current) return;
+            isSyncingScroll.current = true;
+
+            const scrollPercentage = source.scrollTop / (source.scrollHeight - source.clientHeight);
+            target.scrollTop = scrollPercentage * (target.scrollHeight - target.clientHeight);
+
+            setTimeout(() => {
+              isSyncingScroll.current = false;
+            }, 50);
+          };
+
+          const handleBeforeScroll = () => syncScroll(beforeEl, afterEl);
+          const handleAfterScroll = () => syncScroll(afterEl, beforeEl);
+
+          beforeEl.addEventListener('scroll', handleBeforeScroll);
+          afterEl.addEventListener('scroll', handleAfterScroll);
+
+          return () => {
+            beforeEl.removeEventListener('scroll', handleBeforeScroll);
+            afterEl.removeEventListener('scroll', handleAfterScroll);
+          };
+        }, [selectedItem, selectedTabIndex]);
 
         return (
           <section id="portfolio" className="py-24 relative">
@@ -443,19 +493,8 @@
                   <p className="text-gray-500 max-w-2xl mx-auto">실제 작업 방식과 동일한 형태로 제작한 예시입니다.<br />한국 판매용 문구와 구성으로 깔끔하게 정리했습니다.</p>
                 </FadeIn>
               </div>
-              <FadeIn delay={100}>
-                <div className="flex justify-center mb-12">
-                  <div className="inline-flex bg-white/60 backdrop-blur-sm p-1.5 rounded-xl shadow-sm border border-white/40">
-                    {Object.values(PortfolioCategory).map((category) => (
-                      <button key={category} onClick={() => setActiveTab(category)} className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${activeTab === category ? 'bg-white text-primary shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700 hover:bg-white/50'}`}>
-                        {category} 예시
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredItems.map((item, index) => (
+                {PORTFOLIO_ITEMS.map((item, index) => (
                   <FadeIn key={item.id} delay={index * 100}>
                     <div className="group cursor-pointer bg-white p-3 rounded-2xl shadow-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-white/60" onClick={() => setSelectedItem(item)}>
                       {/* Card Thumbnail - Top Crop for Long Images */}
@@ -510,60 +549,158 @@
             </div>
             
             {/* Full Detail Modal */}
-            <Modal isOpen={!!selectedItem} onClose={() => setSelectedItem(null)}>
+            <Modal isOpen={!!selectedItem} onClose={() => { setSelectedItem(null); setSelectedTabIndex(0); }}>
               {selectedItem && (
-                <div className="flex flex-col md:flex-row gap-4 min-h-0 h-full">
-                  {selectedItem.category === PortfolioCategory.TRANSLATION ? (
+                <div className="flex flex-col gap-4 min-h-0 h-full">
+                  {/* 탭이 있는 경우 (PT3) */}
+                  {selectedItem.tabs ? (
                     <>
-                      {/* Before Column */}
-                      <div className="flex-1 flex flex-col items-center bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
-                        <div className="w-full bg-gray-800 text-white px-4 py-3 text-center text-sm font-medium sticky top-0 z-10 shadow-md flex justify-between items-center">
-                          <span>Before (원본)</span>
-                          <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded">스크롤하여 확인</span>
-                        </div>
-                        <div className="w-full overflow-y-auto custom-scrollbar bg-white relative">
-                           <ImageWithFallback 
-                              src={selectedItem.beforeImage} 
-                              fallbackSrc={selectedItem.fallbackBefore}
-                              alt="Before Full" 
-                              containerClassName="w-full min-h-[300px]"
-                              className="w-full max-w-[860px] mx-auto h-auto block" 
-                           />
-                        </div>
+                      {/* Tab Buttons */}
+                      <div className="flex gap-2 justify-center border-b border-gray-200 pb-2">
+                        {selectedItem.tabs.map((tab, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setSelectedTabIndex(index)}
+                            className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                              selectedTabIndex === index
+                                ? 'bg-primary text-white shadow-md'
+                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                            }`}
+                          >
+                            {tab.name}
+                          </button>
+                        ))}
                       </div>
-                      
-                      {/* After Column */}
-                      <div className="flex-1 flex flex-col items-center bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
-                        <div className="w-full bg-primary text-white px-4 py-3 text-center text-sm font-medium sticky top-0 z-10 shadow-md flex justify-between items-center">
-                           <span>After (번역본)</span>
-                           <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded">스크롤하여 확인</span>
-                        </div>
-                        <div className="w-full overflow-y-auto custom-scrollbar bg-white relative">
-                           <ImageWithFallback 
-                              src={selectedItem.afterImage} 
-                              fallbackSrc={selectedItem.fallbackAfter}
-                              alt="After Full" 
-                              containerClassName="w-full min-h-[300px]"
-                              className="w-full max-w-[860px] mx-auto h-auto block" 
-                           />
-                        </div>
+
+                      {/* Tab Content */}
+                      <div className="flex flex-col md:flex-row gap-4 flex-1 min-h-0">
+                        {selectedItem.tabs[selectedTabIndex].images ? (
+                          /* Multiple Images View (Vertical Grid) */
+                          <div className="w-full h-full flex flex-col bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                            <div className="w-full bg-primary text-white px-4 py-3 text-center text-sm font-medium sticky top-0 z-10">
+                              {selectedItem.tabs[selectedTabIndex].name}
+                            </div>
+                            <div className="w-full overflow-y-auto custom-scrollbar bg-white p-4">
+                              <div className="grid grid-cols-2 gap-4 max-w-[860px] mx-auto">
+                                {selectedItem.tabs[selectedTabIndex].images.map((imgSrc, idx) => (
+                                  <div key={idx} className="bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+                                    <ImageWithFallback
+                                      src={imgSrc}
+                                      alt={`${selectedItem.tabs[selectedTabIndex].name} ${idx + 1}`}
+                                      containerClassName="w-full"
+                                      className="w-full h-auto"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : selectedItem.tabs[selectedTabIndex].beforeImage ? (
+                          <>
+                            {/* Before Column */}
+                            <div className="flex-1 flex flex-col items-center bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                              <div className="w-full bg-gray-800 text-white px-4 py-3 text-center text-sm font-medium sticky top-0 z-10 shadow-md">
+                                Before (원본)
+                              </div>
+                              <div ref={beforeScrollRef} className="w-full overflow-y-auto custom-scrollbar bg-white relative">
+                                <ImageWithFallback
+                                  src={selectedItem.tabs[selectedTabIndex].beforeImage}
+                                  alt="Before"
+                                  containerClassName="w-full min-h-[300px]"
+                                  className="w-full max-w-[860px] mx-auto h-auto block"
+                                />
+                              </div>
+                            </div>
+
+                            {/* After Column */}
+                            <div className="flex-1 flex flex-col items-center bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                              <div className="w-full bg-primary text-white px-4 py-3 text-center text-sm font-medium sticky top-0 z-10 shadow-md">
+                                After (완성본)
+                              </div>
+                              <div ref={afterScrollRef} className="w-full overflow-y-auto custom-scrollbar bg-white relative">
+                                <ImageWithFallback
+                                  src={selectedItem.tabs[selectedTabIndex].afterImage}
+                                  alt="After"
+                                  containerClassName="w-full min-h-[300px]"
+                                  className="w-full max-w-[860px] mx-auto h-auto block"
+                                />
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          /* Single Image View */
+                          <div className="w-full h-full flex flex-col bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                            <div className="w-full bg-primary text-white px-4 py-3 text-center text-sm font-medium sticky top-0 z-10">
+                              {selectedItem.tabs[selectedTabIndex].name}
+                            </div>
+                            <div className="w-full overflow-y-auto custom-scrollbar flex justify-center bg-white relative">
+                              <ImageWithFallback
+                                src={selectedItem.tabs[selectedTabIndex].afterImage}
+                                alt={selectedItem.tabs[selectedTabIndex].name}
+                                containerClassName="w-full max-w-[860px] min-h-[500px]"
+                                className="w-full max-w-[860px] h-auto"
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </>
                   ) : (
-                    /* Creation Full View */
-                    <div className="w-full h-full flex flex-col bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
-                      <div className="w-full bg-white px-4 py-3 border-b border-gray-200 text-center font-bold text-primary sticky top-0 z-10">
-                        {selectedItem.title}
-                      </div>
-                      <div className="w-full overflow-y-auto custom-scrollbar flex justify-center bg-gray-100 relative">
-                        <ImageWithFallback 
-                          src={selectedItem.afterImage} 
-                          fallbackSrc={selectedItem.fallbackAfter}
-                          alt="Full Detail Page" 
-                          containerClassName="w-full max-w-[860px] min-h-[500px]"
-                          className="w-full max-w-[860px] h-auto shadow-sm" 
-                        />
-                      </div>
+                    // 탭이 없는 경우 (PT1, PT2, PT4)
+                    <div className="flex flex-col md:flex-row gap-4 flex-1 min-h-0">
+                      {selectedItem.category === PortfolioCategory.TRANSLATION ? (
+                        <>
+                          {/* Before Column */}
+                          <div className="flex-1 flex flex-col items-center bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                            <div className="w-full bg-gray-800 text-white px-4 py-3 text-center text-sm font-medium sticky top-0 z-10 shadow-md flex justify-between items-center">
+                              <span>Before (원본)</span>
+                              <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded">스크롤하여 확인</span>
+                            </div>
+                            <div ref={beforeScrollRef} className="w-full overflow-y-auto custom-scrollbar bg-white relative">
+                               <ImageWithFallback
+                                  src={selectedItem.beforeImage}
+                                  fallbackSrc={selectedItem.fallbackBefore}
+                                  alt="Before Full"
+                                  containerClassName="w-full min-h-[300px]"
+                                  className="w-full max-w-[860px] mx-auto h-auto block"
+                               />
+                            </div>
+                          </div>
+
+                          {/* After Column */}
+                          <div className="flex-1 flex flex-col items-center bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                            <div className="w-full bg-primary text-white px-4 py-3 text-center text-sm font-medium sticky top-0 z-10 shadow-md flex justify-between items-center">
+                               <span>After (번역본)</span>
+                               <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded">스크롤하여 확인</span>
+                            </div>
+                            <div ref={afterScrollRef} className="w-full overflow-y-auto custom-scrollbar bg-white relative">
+                               <ImageWithFallback
+                                  src={selectedItem.afterImage}
+                                  fallbackSrc={selectedItem.fallbackAfter}
+                                  alt="After Full"
+                                  containerClassName="w-full min-h-[300px]"
+                                  className="w-full max-w-[860px] mx-auto h-auto block"
+                               />
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        /* Creation Full View */
+                        <div className="w-full h-full flex flex-col bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                          <div className="w-full bg-white px-4 py-3 border-b border-gray-200 text-center font-bold text-primary sticky top-0 z-10">
+                            {selectedItem.title}
+                          </div>
+                          <div className="w-full overflow-y-auto custom-scrollbar flex justify-center bg-gray-100 relative">
+                            <ImageWithFallback
+                              src={selectedItem.afterImage}
+                              fallbackSrc={selectedItem.fallbackAfter}
+                              alt="Full Detail Page"
+                              containerClassName="w-full max-w-[860px] min-h-[500px]"
+                              className="w-full max-w-[860px] h-auto shadow-sm"
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
