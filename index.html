@@ -188,7 +188,12 @@
           title: '상세페이지 전체 제작 (44,000원)',
           category: PortfolioCategory.CREATION,
           afterImage: `${IMAGE_BASE_URL}/제작/Component17.webp`,
-          description: '인트로, 포인트, 디테일 컷까지 흐름을 고려한 전체 제작'
+          description: '인트로, 포인트, 디테일 컷까지 흐름을 고려한 전체 제작',
+          images: [
+            `${IMAGE_BASE_URL}/제작/Component17.webp`,
+            `${IMAGE_BASE_URL}/제작/Component9.webp`,
+            `${IMAGE_BASE_URL}/제작/베리언트2.webp`
+          ]
         }
       ];
 
@@ -687,8 +692,29 @@
                             </div>
                           </div>
                         </>
+                      ) : selectedItem.images ? (
+                        /* Creation Multiple Images View */
+                        <div className="w-full h-full flex flex-col bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                          <div className="w-full bg-white px-4 py-3 border-b border-gray-200 text-center font-bold text-primary sticky top-0 z-10">
+                            {selectedItem.title}
+                          </div>
+                          <div className="w-full overflow-y-auto custom-scrollbar bg-gray-100 p-4">
+                            <div className="flex flex-col gap-4 max-w-[860px] mx-auto">
+                              {selectedItem.images.map((imgSrc, idx) => (
+                                <div key={idx} className="bg-white rounded-lg overflow-hidden shadow-sm">
+                                  <ImageWithFallback
+                                    src={imgSrc}
+                                    alt={`${selectedItem.title} ${idx + 1}`}
+                                    containerClassName="w-full"
+                                    className="w-full h-auto"
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
                       ) : (
-                        /* Creation Full View */
+                        /* Creation Single Image View */
                         <div className="w-full h-full flex flex-col bg-gray-50 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
                           <div className="w-full bg-white px-4 py-3 border-b border-gray-200 text-center font-bold text-primary sticky top-0 z-10">
                             {selectedItem.title}
