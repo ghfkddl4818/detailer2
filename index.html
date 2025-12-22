@@ -699,9 +699,9 @@
                             {selectedItem.title}
                           </div>
                           <div className="w-full overflow-y-auto custom-scrollbar bg-gray-100 p-4">
-                            <div className="flex flex-col gap-4 max-w-[860px] mx-auto">
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-[1200px] mx-auto">
                               {selectedItem.images.map((imgSrc, idx) => (
-                                <div key={idx} className="bg-white rounded-lg overflow-hidden shadow-sm">
+                                <div key={idx} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                                   <ImageWithFallback
                                     src={imgSrc}
                                     alt={`${selectedItem.title} ${idx + 1}`}
