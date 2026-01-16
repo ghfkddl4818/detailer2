@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세페이지 포트폴리오</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #222;
+        }
+
+        header p {
+            color: #666;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-item .info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #222;
+        }
+
+        .portfolio-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* 모달 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            margin-top: 4rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 0;
+            }
+
+            .close-modal {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>상세페이지 포트폴리오</h1>
+        <p>Product Detail Page Design Portfolio</p>
+    </header>
+
+    <div class="container">
+        <div class="gallery">
+            <div class="portfolio-item" onclick="openModal('images/product1.jpg')">
+                <img src="images/product1.jpg" alt="테이블 상세페이지">
+                <div class="info">
+                    <h3>테이블/거실 가구</h3>
+                    <p>모던한 감성의 거실 가구 상세페이지 디자인</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" onclick="openModal('images/product2.jpg')">
+                <img src="images/product2.jpg" alt="수납장 상세페이지">
+                <div class="info">
+                    <h3>수납장/서랍장</h3>
+                    <p>실용적인 수납 가구 상세페이지 디자인</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" onclick="openModal('images/product3.jpg')">
+                <img src="images/product3.jpg" alt="침대 상세페이지">
+                <div class="info">
+                    <h3>침대/매트리스</h3>
+                    <p>편안한 수면을 위한 침대 상세페이지 디자인</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" onclick="openModal('images/product4.jpg')">
+                <img src="images/product4.jpg" alt="스탠딩 책상 상세페이지">
+                <div class="info">
+                    <h3>스탠딩 책상</h3>
+                    <p>업무 효율을 높이는 스탠딩 책상 상세페이지</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" onclick="openModal('images/product5.jpg')">
+                <img src="images/product5.jpg" alt="런닝머신 상세페이지">
+                <div class="info">
+                    <h3>런닝머신</h3>
+                    <p>홈 피트니스 런닝머신 상세페이지 디자인</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" onclick="openModal('images/product6.jpg')">
+                <img src="images/product6.jpg" alt="홈트레이닝 상세페이지">
+                <div class="info">
+                    <h3>홈트레이닝 장비</h3>
+                    <p>집에서 즐기는 운동 기구 상세페이지 디자인</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="상세 이미지">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Product Detail Page Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modal-image');
+            modalImage.src = imageSrc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event.target.id === 'modal' || event.target.classList.contains('close-modal')) {
+                const modal = document.getElementById('modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
